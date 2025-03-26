@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Bet - Amity</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Amity</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="matches.html">Matches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wallet.html">Wallet</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <span id="userBalance">₹0.00</span>
+                            <img src="images/user.png" alt="User" class="rounded-circle ms-2" width="30">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="wallet.html">Wallet</a></li>
+                            <li><a class="dropdown-item" href="transactions.html">Transactions</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0" id="matchTitle">Match Title</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-5 text-center">
+                                <img src="images/team1.png" alt="Team 1" class="img-fluid team-logo">
+                                <h4 id="team1Name">Team 1</h4>
+                            </div>
+                            <div class="col-md-2 text-center d-flex align-items-center justify-content-center">
+                                <div>
+                                    <div class="fs-5">VS</div>
+                                    <div class="text-muted" id="matchTime">Today, 7:30 PM</div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 text-center">
+                                <img src="images/team2.png" alt="Team 2" class="img-fluid team-logo">
+                                <h4 id="team2Name">Team 2</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <strong>Betting ends in:</strong> <span id="bettingEndsIn">02:15:30</span>
+                        </div>
+                        
+                        <ul class="nav nav-tabs mb-4" id="betTypesTab">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#matchWinner">Match Winner</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#topBatsman">Top Batsman</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#topBowler">Top Bowler</a>
+                            </li>
+                        </ul>
+                        
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="matchWinner">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Option</th>
+                                                <th>Odds</th>
+                                                <th>Your Bet</th>
+                                                <th>Potential Win</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong id="team1NameShort">T1</strong> Win</td>
+                                                <td>1.85</td>
+                                                <td><input type="number" class="form-control bet-amount" placeholder="₹" min="10"></td>
+                                                <td>₹0.00</td>
+                                                <td><button class="btn btn-sm btn-success bet-now">Bet Now</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong id="team2NameShort">T2</strong> Win</td>
+                                                <td>1.95</td>
+                                                <td><input type="number" class="form-control bet-amount" placeholder="₹" min="10"></td>
+                                                <td>₹0.00</td>
+                                                <td><button class="btn btn-sm btn-success bet-now">Bet Now</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Draw/Tie</td>
+                                                <td>5.25</td>
+                                                <td><input type="number" class="form-control bet-amount" placeholder="₹" min="10"></td>
+                                                <td>₹0.00</td>
+                                                <td><button class="btn btn-sm btn-success bet-now">Bet Now</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="topBatsman">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Player</th>
+                                                <th>Team</th>
+                                                <th>Odds</th>
+                                                <th>Your Bet</th>
+                                                <th>Potential Win</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Virat Kohli</td>
+                                                <td>IND</td>
+                                                <td>3.50</td>
+                                                <td><input type="number" class="form-control bet-amount" placeholder="₹" min="10"></td>
+                                                <td>₹0.00</td>
+                                                <td><button class="btn btn-sm btn-success bet-now">Bet Now</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>David Warner</td>
+                                                <td>AUS</td>
+                                                <td>4.00</td>
+                                                <td><input type="number" class="form-control bet-amount" placeholder="₹" min="10"></td>
+                                                <td>₹0.00</td>
+                                                <td><button class="btn btn-sm btn-success bet-now">Bet Now</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Rohit Sharma</td>
+                                                <td>IND</td>
+                                                <td>4.50</td>
+                                                <td><input type="number" class="form-control bet-amount" placeholder="₹" min="10"></td>
+                                                <td>₹0.00</td>
+                                                <td><button class="btn btn-sm btn-success bet-now">Bet Now</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="topBowler">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Player</th>
+                                                <th>Team</th>
+                                                <th>Odds</th>
+                                                <th>Your Bet</th>
+                                                <th>Potential Win</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Jasprit Bumrah</td>
+                                                <td>IND</td>
+                                                <td>3.25</td>
+                                                <td><input type="number" class="form-control bet-amount" placeholder="₹" min="10"></td>
+                                                <td>₹0.00</td>
+                                                <td><button class="btn btn-sm btn-success bet-now">Bet Now</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pat Cummins</td>
+                                                <td>AUS</td>
+                                                <td>3.75</td>
+                                                <td><input type="number" class="form-control bet-amount" placeholder="₹" min="10"></td>
+                                                <td>₹0.00</td>
+                                                <td><button class="btn btn-sm btn-success bet-now">Bet Now</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mohammed Shami</td>
+                                                <td>IND</td>
+                                                <td>4.25</td>
+                                                <td><input type="number" class="form-control bet-amount" placeholder="₹" min="10"></td>
+                                                <td>₹0.00</td>
+                                                <td><button class="btn btn-sm btn-success bet-now">Bet Now</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">Match Statistics</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-4 mb-3">
+                                <div class="stat-card">
+                                    <div class="stat-value">72/3</div>
+                                    <div class="stat-label">IND (10 overs)</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="stat-card">
+                                    <div class="stat-value">65/2</div>
+                                    <div class="stat-label">AUS (10 overs)</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="stat-card">
+                                    <div class="stat-value">7 runs</div>
+                                    <div class="stat-label">IND lead by</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Batsman</th>
+                                        <th>R</th>
+                                        <th>B</th>
+                                        <th>4s</th>
+                                        <th>6s</th>
+                                        <th>SR</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>R Sharma (c) <span class="text-danger">†</span></td>
+                                        <td>28</td>
+                                        <td>22</td>
+                                        <td>3</td>
+                                        <td>1</td>
+                                        <td>127.27</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V Kohli</td>
+                                        <td>34</td>
+                                        <td>26</td>
+                                        <td>4</td>
+                                        <td>0</td>
+                                        <td>130.76</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Your Bets</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="currentBets">
+                            <p class="text-muted">No bets placed yet</p>
+                        </div>
+                        <div class="d-grid gap-2 mt-3">
+                            <button class="btn btn-outline-primary" onclick="location.href='wallet.html'">Add Funds</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">Bet Slip</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="betSlip">
+                            <p class="text-muted">No bets in slip</p>
+                        </div>
+                        <div class="d-flex justify-content-between mt-3">
+                            <strong>Total Stake:</strong>
+                            <strong id="totalStake">₹0.00</strong>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <strong>Potential Win:</strong>
+                            <strong id="potentialWin">₹0.00</strong>
+                        </div>
+                        <button class="btn btn-primary w-100 mt-3" id="placeBetsBtn">Place Bets</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">Match Odds</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="odds-movement">
+                            <div class="odds-header d-flex justify-content-between mb-2">
+                                <span>IND Win</span>
+                                <span>1.85</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 5px;">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 60%"></div>
+                            </div>
+                            
+                            <div class="odds-header d-flex justify-content-between mb-2">
+                                <span>AUS Win</span>
+                                <span>1.95</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 5px;">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 35%"></div>
+                            </div>
+                            
+                            <div class="odds-header d-flex justify-content-between mb-2">
+                                <span>Draw/Tie</span>
+                                <span>5.25</span>
+                            </div>
+                            <div class="progress" style="height: 5px;">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 5%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-3">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2023 Amity Fantasy Cricket. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/bet.js"></script>
+</body>
+</html>
