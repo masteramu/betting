@@ -3,114 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Matches | Amity</title>
+    <title>Dashboard - Amity</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <div class="logo">Amity</div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="dashboard.html" class="active">Matches</a></li>
-                    <li><a href="wallet.html">Wallet</a></li>
-                    <li><a href="#">How to Play</a></li>
+            <a class="navbar-brand" href="#">Amity</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="matches.html">Matches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wallet.html">Wallet</a>
+                    </li>
                 </ul>
-            </nav>
-            <div class="user-info">
-                <span class="balance">₹5,000.00</span>
-                <div class="user-avatar">
-                    <img src="images/avatar.png" alt="User">
-                </div>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <span id="userBalance">₹0.00</span>
+                            <img src="images/user.png" alt="User" class="rounded-circle ms-2" width="30">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="wallet.html">Wallet</a></li>
+                            <li><a class="dropdown-item" href="transactions.html">Transactions</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section class="live-matches">
-            <div class="container">
-                <h2>Live Matches</h2>
-                <div class="match-cards">
-                    <!-- Match Card 1 -->
-                    <div class="match-card">
-                        <div class="teams">
-                            <div class="team">
-                                <img src="images/team1.png" alt="Team A">
-                                <span>Team A</span>
-                            </div>
-                            <div class="vs">VS</div>
-                            <div class="team">
-                                <img src="images/team2.png" alt="Team B">
-                                <span>Team B</span>
-                            </div>
-                        </div>
-                        <div class="match-info">
-                            <p class="tournament">IPL 2023</p>
-                            <p class="time-left">Betting ends in: <span class="timer" data-end="2023-06-15T18:30:00">02:45:36</span></p>
-                        </div>
-                        <div class="bet-options">
-                            <button class="bet-btn" data-team="teamA">Bet on Team A (1.85)</button>
-                            <button class="bet-btn" data-team="teamB">Bet on Team B (2.10)</button>
+    <main class="container my-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Live & Upcoming Matches</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Match</th>
+                                        <th>Series</th>
+                                        <th>Time</th>
+                                        <th>Betting Ends</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="matchesTable">
+                                    <!-- Dynamic content will be loaded here -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-
-                    <!-- Match Card 2 -->
-                    <div class="match-card">
-                        <div class="teams">
-                            <div class="team">
-                                <img src="images/team3.png" alt="Team C">
-                                <span>Team C</span>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">Recent Winners</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 text-center mb-3">
+                                <div class="winner-card p-3">
+                                    <img src="images/user1.jpg" alt="Winner" class="rounded-circle mb-2" width="80">
+                                    <h6>Rahul S.</h6>
+                                    <div class="text-success fw-bold">₹12,450</div>
+                                    <small class="text-muted">IND vs AUS</small>
+                                </div>
                             </div>
-                            <div class="vs">VS</div>
-                            <div class="team">
-                                <img src="images/team4.png" alt="Team D">
-                                <span>Team D</span>
+                            <div class="col-md-4 text-center mb-3">
+                                <div class="winner-card p-3">
+                                    <img src="images/user2.jpg" alt="Winner" class="rounded-circle mb-2" width="80">
+                                    <h6>Priya M.</h6>
+                                    <div class="text-success fw-bold">₹8,750</div>
+                                    <small class="text-muted">ENG vs NZ</small>
+                                </div>
                             </div>
-                        </div>
-                        <div class="match-info">
-                            <p class="tournament">International</p>
-                            <p class="time-left">Betting ends in: <span class="timer" data-end="2023-06-16T14:00:00">12:45:36</span></p>
-                        </div>
-                        <div class="bet-options">
-                            <button class="bet-btn" data-team="teamC">Bet on Team C (1.95)</button>
-                            <button class="bet-btn" data-team="teamD">Bet on Team D (1.95)</button>
+                            <div class="col-md-4 text-center mb-3">
+                                <div class="winner-card p-3">
+                                    <img src="images/user3.jpg" alt="Winner" class="rounded-circle mb-2" width="80">
+                                    <h6>Vikram P.</h6>
+                                    <div class="text-success fw-bold">₹15,200</div>
+                                    <small class="text-muted">SA vs PAK</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Bet Modal -->
-        <div class="modal" id="betModal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h3>Place Your Bet</h3>
-                <div class="selected-team">
-                    <p>You're betting on: <span id="selectedTeamName">Team A</span></p>
-                    <p>Odds: <span id="selectedTeamOdds">1.85</span></p>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">My Wallet</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <h3 id="walletBalance">₹0.00</h3>
+                        <div class="d-grid gap-2 mt-3">
+                            <button class="btn btn-primary" onclick="location.href='wallet.html'">Deposit</button>
+                            <button class="btn btn-outline-primary" onclick="location.href='wallet.html'">Withdraw</button>
+                        </div>
+                    </div>
                 </div>
-                <form id="betForm">
-                    <div class="form-group">
-                        <label for="betAmount">Amount (₹)</label>
-                        <input type="number" id="betAmount" min="10" step="10" value="100" required>
+                
+                <div class="card mb-4">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">My Active Bets</h5>
                     </div>
-                    <div class="potential-win">
-                        <p>Potential Win: ₹<span id="potentialWin">185.00</span></p>
+                    <div class="card-body">
+                        <ul class="list-group" id="activeBets">
+                            <!-- Dynamic content will be loaded here -->
+                            <li class="list-group-item text-center">No active bets</li>
+                        </ul>
                     </div>
-                    <button type="submit" class="btn">Place Bet</button>
-                </form>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">Quick Stats</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Total Bets:</span>
+                                <strong id="totalBetsStat">0</strong>
+                            </div>
+                            <div class="progress mt-1" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 25%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Winning Rate:</span>
+                                <strong id="winRateStat">0%</strong>
+                            </div>
+                            <div class="progress mt-1" style="height: 5px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-content-between">
+                                <span>Total Winnings:</span>
+                                <strong id="totalWinningsStat">₹0.00</strong>
+                            </div>
+                            <div class="progress mt-1" style="height: 5px;">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 Amity Fantasy Cricket. All rights reserved.</p>
+    <footer class="bg-dark text-white py-3">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2023 Amity Fantasy Cricket. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
 </body>
 </html>
