@@ -1,0 +1,64 @@
+/* Responsive Styles */
+@media (max-width: 992px) {
+    header .container {
+        flex-direction: column;
+    }
+
+    nav ul {
+        margin: 15px 0;
+    }
+
+    .auth-buttons {
+        margin-top: 15px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    .match-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-methods {
+        flex-direction: column;
+    }
+
+    .transaction-history table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 95%;
+    }
+
+    .login-form {
+        padding: 20px;
+    }
+
+    .modal-content {
+        margin: 20% auto;
+    }
+
+    .teams {
+        flex-direction: column;
+    }
+
+    .vs {
+        margin: 10px 0;
+    }
+}
