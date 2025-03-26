@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet | Amity</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Amity</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Matches</a></li>
+                    <li><a href="wallet.html" class="active">Wallet</a></li>
+                    <li><a href="#">How to Play</a></li>
+                </ul>
+            </nav>
+            <div class="user-info">
+                <span class="balance">₹5,000.00</span>
+                <div class="user-avatar">
+                    <img src="images/avatar.png" alt="User">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="wallet">
+            <div class="container">
+                <div class="wallet-balance">
+                    <h2>Your Wallet Balance</h2>
+                    <div class="balance-amount">₹5,000.00</div>
+                </div>
+
+                <div class="wallet-actions">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="deposit">Deposit</button>
+                        <button class="tab-btn" data-tab="withdraw">Withdraw</button>
+                        <button class="tab-btn" data-tab="history">Transaction History</button>
+                    </div>
+
+                    <div class="tab-content">
+                        <!-- Deposit Tab -->
+                        <div id="deposit" class="tab-pane active">
+                            <form id="depositForm">
+                                <div class="form-group">
+                                    <label for="depositAmount">Amount (₹)</label>
+                                    <input type="number" id="depositAmount" min="100" step="100" value="1000" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Payment Method</label>
+                                    <div class="payment-methods">
+                                        <label class="payment-method">
+                                            <input type="radio" name="paymentMethod" value="upi" checked>
+                                            <img src="images/upi.png" alt="UPI">
+                                            <span>UPI</span>
+                                        </label>
+                                        <label class="payment-method">
+                                            <input type="radio" name="paymentMethod" value="netbanking">
+                                            <img src="images/netbanking.png" alt="Net Banking">
+                                            <span>Net Banking</span>
+                                        </label>
+                                        <label class="payment-method">
+                                            <input type="radio" name="paymentMethod" value="card">
+                                            <img src="images/card.png" alt="Credit/Debit Card">
+                                            <span>Card</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn">Deposit Now</button>
+                            </form>
+                        </div>
+
+                        <!-- Withdraw Tab -->
+                        <div id="withdraw" class="tab-pane">
+                            <form id="withdrawForm">
+                                <div class="form-group">
+                                    <label for="withdrawAmount">Amount (₹)</label>
+                                    <input type="number" id="withdrawAmount" min="500" step="100" value="1000" required>
+                                    <p class="note">Minimum withdrawal amount: ₹500</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bankAccount">Bank Account</label>
+                                    <select id="bankAccount" required>
+                                        <option value="">Select Bank Account</option>
+                                        <option value="1">HDFC Bank - XXXX5678</option>
+                                        <option value="2">ICICI Bank - XXXX1234</option>
+                                    </select>
+                                    <a href="#" class="add-bank">+ Add New Bank Account</a>
+                                </div>
+                                <button type="submit" class="btn">Request Withdrawal</button>
+                            </form>
+                        </div>
+
+                        <!-- History Tab -->
+                        <div id="history" class="tab-pane">
+                            <div class="transaction-history">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Description</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>15 Jun 2023</td>
+                                            <td>Deposit via UPI</td>
+                                            <td class="credit">+₹2,000.00</td>
+                                            <td><span class="status completed">Completed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>14 Jun 2023</td>
+                                            <td>Bet on Team A vs Team B</td>
+                                            <td class="debit">-₹500.00</td>
+                                            <td><span class="status completed">Completed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>13 Jun 2023</td>
+                                            <td>Withdrawal to HDFC Bank</td>
+                                            <td class="debit">-₹1,000.00</td>
+                                            <td><span class="status pending">Pending</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>12 Jun 2023</td>
+                                            <td>Winning from Team X vs Team Y</td>
+                                            <td class="credit">+₹3,750.00</td>
+                                            <td><span class="status completed">Completed</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Amity Fantasy Cricket. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/wallet.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
