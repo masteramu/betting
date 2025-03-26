@@ -3,153 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wallet | Amity</title>
+    <title>Wallet - Amity</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <div class="logo">Amity</div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="dashboard.html">Matches</a></li>
-                    <li><a href="wallet.html" class="active">Wallet</a></li>
-                    <li><a href="#">How to Play</a></li>
+            <a class="navbar-brand" href="#">Amity</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="matches.html">Matches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="wallet.html">Wallet</a>
+                    </li>
                 </ul>
-            </nav>
-            <div class="user-info">
-                <span class="balance">₹5,000.00</span>
-                <div class="user-avatar">
-                    <img src="images/avatar.png" alt="User">
-                </div>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <span id="userBalance">₹0.00</span>
+                            <img src="images/user.png" alt="User" class="rounded-circle ms-2" width="30">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="wallet.html">Wallet</a></li>
+                            <li><a class="dropdown-item" href="transactions.html">Transactions</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section class="wallet">
-            <div class="container">
-                <div class="wallet-balance">
-                    <h2>Your Wallet Balance</h2>
-                    <div class="balance-amount">₹5,000.00</div>
-                </div>
-
-                <div class="wallet-actions">
-                    <div class="tabs">
-                        <button class="tab-btn active" data-tab="deposit">Deposit</button>
-                        <button class="tab-btn" data-tab="withdraw">Withdraw</button>
-                        <button class="tab-btn" data-tab="history">Transaction History</button>
+    <main class="container my-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#deposit">Deposit</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#withdraw">Withdraw</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#transactions">Transactions</a>
+                            </li>
+                        </ul>
                     </div>
-
-                    <div class="tab-content">
-                        <!-- Deposit Tab -->
-                        <div id="deposit" class="tab-pane active">
-                            <form id="depositForm">
-                                <div class="form-group">
-                                    <label for="depositAmount">Amount (₹)</label>
-                                    <input type="number" id="depositAmount" min="100" step="100" value="1000" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Payment Method</label>
-                                    <div class="payment-methods">
-                                        <label class="payment-method">
-                                            <input type="radio" name="paymentMethod" value="upi" checked>
-                                            <img src="images/upi.png" alt="UPI">
-                                            <span>UPI</span>
-                                        </label>
-                                        <label class="payment-method">
-                                            <input type="radio" name="paymentMethod" value="netbanking">
-                                            <img src="images/netbanking.png" alt="Net Banking">
-                                            <span>Net Banking</span>
-                                        </label>
-                                        <label class="payment-method">
-                                            <input type="radio" name="paymentMethod" value="card">
-                                            <img src="images/card.png" alt="Credit/Debit Card">
-                                            <span>Card</span>
-                                        </label>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="deposit">
+                                <h5 class="card-title">Add Funds to Your Wallet</h5>
+                                <form id="depositForm">
+                                    <div class="mb-3">
+                                        <label for="depositAmount" class="form-label">Amount (₹)</label>
+                                        <input type="number" class="form-control" id="depositAmount" min="100" step="100" required>
                                     </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Payment Method</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="paymentMethod" id="upi" value="upi" checked>
+                                            <label class="form-check-label" for="upi">UPI</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="paymentMethod" id="netbanking" value="netbanking">
+                                            <label class="form-check-label" for="netbanking">Net Banking</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="paymentMethod" id="card" value="card">
+                                            <label class="form-check-label" for="card">Credit/Debit Card</label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3" id="upiField">
+                                        <label for="upiId" class="form-label">UPI ID</label>
+                                        <input type="text" class="form-control" id="upiId" placeholder="yourname@upi">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+                                </form>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="withdraw">
+                                <h5 class="card-title">Withdraw Funds</h5>
+                                <form id="withdrawForm">
+                                    <div class="mb-3">
+                                        <label for="withdrawAmount" class="form-label">Amount (₹)</label>
+                                        <input type="number" class="form-control" id="withdrawAmount" min="200" required>
+                                        <small class="text-muted">Minimum withdrawal amount: ₹200</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="bankAccount" class="form-label">Bank Account</label>
+                                        <select class="form-select" id="bankAccount" required>
+                                            <option value="">Select Bank Account</option>
+                                            <!-- Dynamic content will be loaded here -->
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Request Withdrawal</button>
+                                </form>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="transactions">
+                                <h5 class="card-title">Transaction History</h5>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Description</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="transactionHistory">
+                                            <!-- Dynamic content will be loaded here -->
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <button type="submit" class="btn">Deposit Now</button>
-                            </form>
-                        </div>
-
-                        <!-- Withdraw Tab -->
-                        <div id="withdraw" class="tab-pane">
-                            <form id="withdrawForm">
-                                <div class="form-group">
-                                    <label for="withdrawAmount">Amount (₹)</label>
-                                    <input type="number" id="withdrawAmount" min="500" step="100" value="1000" required>
-                                    <p class="note">Minimum withdrawal amount: ₹500</p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="bankAccount">Bank Account</label>
-                                    <select id="bankAccount" required>
-                                        <option value="">Select Bank Account</option>
-                                        <option value="1">HDFC Bank - XXXX5678</option>
-                                        <option value="2">ICICI Bank - XXXX1234</option>
-                                    </select>
-                                    <a href="#" class="add-bank">+ Add New Bank Account</a>
-                                </div>
-                                <button type="submit" class="btn">Request Withdrawal</button>
-                            </form>
-                        </div>
-
-                        <!-- History Tab -->
-                        <div id="history" class="tab-pane">
-                            <div class="transaction-history">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Description</th>
-                                            <th>Amount</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>15 Jun 2023</td>
-                                            <td>Deposit via UPI</td>
-                                            <td class="credit">+₹2,000.00</td>
-                                            <td><span class="status completed">Completed</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>14 Jun 2023</td>
-                                            <td>Bet on Team A vs Team B</td>
-                                            <td class="debit">-₹500.00</td>
-                                            <td><span class="status completed">Completed</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>13 Jun 2023</td>
-                                            <td>Withdrawal to HDFC Bank</td>
-                                            <td class="debit">-₹1,000.00</td>
-                                            <td><span class="status pending">Pending</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>12 Jun 2023</td>
-                                            <td>Winning from Team X vs Team Y</td>
-                                            <td class="credit">+₹3,750.00</td>
-                                            <td><span class="status completed">Completed</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Wallet Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Current Balance:</span>
+                            <strong id="currentBalance">₹0.00</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Total Deposits:</span>
+                            <strong id="totalDeposits">₹0.00</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Total Withdrawals:</span>
+                            <strong id="totalWithdrawals">₹0.00</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Winnings:</span>
+                            <strong id="totalWinnings">₹0.00</strong>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>Bets Placed:</span>
+                            <strong id="totalBets">0</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">Add Bank Account</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="bankAccountForm">
+                            <div class="mb-3">
+                                <label for="accountHolder" class="form-label">Account Holder Name</label>
+                                <input type="text" class="form-control" id="accountHolder" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="accountNumber" class="form-label">Account Number</label>
+                                <input type="text" class="form-control" id="accountNumber" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ifscCode" class="form-label">IFSC Code</label>
+                                <input type="text" class="form-control" id="ifscCode" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="bankName" class="form-label">Bank Name</label>
+                                <input type="text" class="form-control" id="bankName" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Save Account</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 Amity Fantasy Cricket. All rights reserved.</p>
+    <footer class="bg-dark text-white py-3">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2023 Amity Fantasy Cricket. All rights reserved.</p>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
     <script src="js/wallet.js"></script>
-    <script src="js/main.js"></script>
 </body>
 </html>
